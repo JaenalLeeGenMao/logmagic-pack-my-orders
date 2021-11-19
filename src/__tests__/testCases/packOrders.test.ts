@@ -202,4 +202,13 @@ describe("Orders Packing Test Cases", () => {
       expectedShipmentRecord
     );
   });
+
+  test("Given an empty order that cannot fit into any containers, throw an error", () => {
+    const orderRequest: OrderRequest = {
+      id: "ORDER-005",
+      products: [],
+    };
+
+    expect(() => orderHandler.packOrder(orderRequest)).toThrowError();
+  });
 });
